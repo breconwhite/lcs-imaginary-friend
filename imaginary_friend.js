@@ -22,8 +22,13 @@ function sortPlayers(data){
 		var players = splitRoles[i].split(",");
 		positions.push(players);
 		remaining.push(players);
-		players.splice(0,1);
-		allPlayers = allPlayers.concat(players);
+
+		var justPlayers = Array();
+		for (var j = players.length - 1; j >= 0; j--) {
+			justPlayers[j] = players[j];
+		};
+		justPlayers.splice(0,1);
+		allPlayers = allPlayers.concat(justPlayers);
 	};
 
 	$("#playerRemover").autocomplete({
@@ -77,7 +82,6 @@ function removePlayer(){
 
 	var al = allPlayers.indexOf(removed);
 	if(al != null && al >= 0){
-		alert(al);
 		allPlayers.splice(al,1);
 		$("#removedPlayers").append("<li>"+removed+"</li>");
 	}
