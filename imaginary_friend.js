@@ -56,7 +56,9 @@ function rollPicks(){
 		posPick = Math.floor((Math.random() * remaining.length));
 		var pickedPosition = remaining[posPick];
 
-		playPick = Math.floor((Math.random() * remaining[posPick].length)+1);
+		playPick = Math.floor((Math.random() * remaining[posPick].length-1)+2);
+		
+		console.log(pickedPosition, playPick);
 
 		//SUBMIT PICK
 		var result = Array(pickedPosition[playPick],pickedPosition[0]);
