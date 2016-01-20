@@ -44,6 +44,7 @@ function sortPlayers(data){
 }
 
 function rollPicks(){
+
 	if(pickNum > 0){
 		
 		if(remaining.length < 1){
@@ -56,13 +57,14 @@ function rollPicks(){
 		posPick = Math.floor((Math.random() * remaining.length));
 		var pickedPosition = remaining[posPick];
 
-		playPick = Math.floor((Math.random() * remaining[posPick].length-1)+2);
-		
-		console.log(pickedPosition, playPick);
-
-		//SUBMIT PICK
+		playPick = Math.floor((Math.random() * (pickedPosition.length-1))+1);
+		console.log(playPick, pickedPosition.length);
+ 		
+ 		//SUBMIT PICK
 		var result = Array(pickedPosition[playPick],pickedPosition[0]);
 		chosen.push(result);
+		
+		removeIt(pickedPosition[playPick]);
 
 		$("#playerDrafter").html("<h2>"+result[0]+" playing "+result[1]+"</h2>");
 
@@ -82,24 +84,29 @@ function rollPicks(){
 function removePlayer(){
 	var removed = $("#playerRemover").val();
 
-	var al = allPlayers.indexOf(removed);
+	removeIt(removed);
+	
+	$("#playerRemover").val("");
+}
+
+function removeIt(name){
+	var al = allPlayers.indexOf(name);
 	if(al != null && al >= 0){
 		allPlayers.splice(al,1);
-		$("#removedPlayers").append("<li>"+removed+"</li>");
+		$("#removedPlayers").append("<li>"+name+"</li>");
 	}
 
 	console.log(remaining);
 	for (var i = remaining.length - 1; i >= 0; i--) {
-		var a = remaining[i].indexOf(removed);
+		var a = remaining[i].indexOf(name);
 		if(a != null && a >= 0){
 			remaining[i].splice(a,1);
 		}
 	};	
 	for (var i = positions.length - 1; i >= 0; i--) {
-		var a = positions[i].indexOf(removed);
+		var a = positions[i].indexOf(name);
 		if(a != null && a >= 0){
 			positions[i].splice(a,1);
 		}
 	};
-	$("#playerRemover").val("");
 }
