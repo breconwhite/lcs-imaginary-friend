@@ -67,6 +67,7 @@ function rollPicks(){
 		removeIt(pickedPosition[playPick]);
 
 		$("#playerDrafter").html("<h2>"+result[0]+" playing "+result[1]+"</h2>");
+		$("#chosenPlayers").append("<li>"+result[0]+" - "+result[1]+"</li>");
 
 		//REMOVE ROLLS
 		remaining.splice(posPick,1);
@@ -77,7 +78,8 @@ function rollPicks(){
 		for (var i = chosen.length - 1; i >= 0; i--) {
 			resultString += "<li>"+chosen[i][1]+" - "+chosen[i][0]+"</li>"; 
 		};
-		$("#playerDrafter").html(resultString);
+		$("#draftBox").html("Your Perfect S+, LCS Winning Bronze Team is Done!");
+		$('.other-times').addClass("goodbye");
 	}
 }
 
