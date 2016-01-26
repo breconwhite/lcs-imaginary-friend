@@ -1,18 +1,30 @@
-<div>
-	<h1>LCS Draft Imaginary Friend</h1>
-	<div class='ui-widget'>
-		<input id='playerRemover' type='text' placeholder></input>
-		<button onclick='removePlayer()'>Remove</button>
+<head>
+	<link rel="stylesheet" type="text/css" href="lcsff.css">
+</head>
+
+<body>
+	<div class='fancy-header'></div>
+	<div class='np list col3'>
+		<div id='removedPlayers' class='block'><h2>Players No Longer Available for Draft</h2></div>
 	</div>
-</div>
-
-<div>
-	<button onclick='rollPicks()'>ROLL FOR INITIATIVE</button>
-</div>
-
-<div id='playerDrafter'>
-</div>
-<div id='removedPlayers'><h2>Unavailable</h2></div>
+	<div class='col6'>
+		<div class='block big-times'>
+			<div id='draftBox'>
+				<div id='playerDrafter'></div>
+				<button onclick='rollPicks()'>ROLL FOR INITIATIVE</button>
+			</div>
+		</div>
+		<div class='block other-times'>
+			<div class='ui-widget'>
+				<input id='playerRemover' type='text' placeholder></input>
+				<button onclick='removePlayer()'>Remove</button>
+			</div>
+		</div>
+	</div>
+	<div class='cp list col3'>
+		<div class='block' id='chosenPlayers'><h2>Chosen Players</h2></div>
+	</div>
+</body>
 
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="http://code.jquery.com/jquery-1.12.0.min.js"></script>
